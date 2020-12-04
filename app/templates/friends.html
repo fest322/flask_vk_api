@@ -1,0 +1,32 @@
+<html>
+    <head>
+    	<style>
+    		@import "/static/css/button.css";
+    		@import "/static/css/cards.css";
+		    @import "/static/css/background.css";
+  		</style>
+    <title>Friend</title>
+    </head>
+    <body>
+      <p align="center" style="font-size:30px">Друзья {{userData.first_name}} {{userData.last_name}}:</p>
+      {% if error%}
+        <p align="center" style="font-size:30px">{{error}}</p>
+      {% endif %}
+
+      {% if friends%}
+      {% for friend in friends %}
+        <div class="card">
+          <img src={{friend.photo_200_orig}} alt="Avatar" style="width:100%">
+          <div class="container">
+            <h4><b>{{friend.first_name}} {{friend.last_name}}</b></h4>
+            <p>Страна: {{friend.country.title}} </p>
+            <p>Город: {{friend.city.title}} </p>
+            <p>Пол: {{friend.sex}} </p>
+            <p>Статус: {{friend.online}} </p>
+          </div>
+        </div>
+        <br>
+      {% endfor %}
+      {% endif %}
+    </body>
+</html>

@@ -1,0 +1,16 @@
+HTML {
+  height: 100%;
+  }
+BODY {
+  background: linear-gradient( 90deg,
+      rgba(255, 225, 132, .7) 50%, rgba(255,255,255, 0) 50%),
+    linear-gradient( 90deg,
+      rgba(32, 113, 120, .3) 50%, rgba(255,255,255, 0) 50%),
+    linear-gradient( 90deg,
+      rgba(255, 150, 102, .3) 50%, rgba(255,255,255, 0) 50%),
+    linear-gradient( 90deg,
+      rgba(23, 76, 79, .1) 50%, rgba(255,255,255, 0) 50%);
+  background-size: 7em 7em, 5em 5em, 3em 3em, 1em 1em;
+  background-color: #F5E9BE;
+  font: 10px/1.4 'Trebuchet MS', Verdana, sans-serif;
+  }

@@ -1,12 +1,39 @@
 <html>
     <head>
-        <title>{{ title }} - Microblog</title>
+    	<style>
+    		@import "/static/css/button.css";
+    		@import "/static/css/cards.css";
+		    @import "/static/css/background.css";
+  		</style>
+    <title>{{ title }}</title>
+    
     </head>
+
     <body>
-        <h1>Hello, {{ user.username }}!</h1>
-        <p style="text-align: center">
-        	<button onclick=" href = 'https://oauth.vk.com/authorize?client_id=5490057&display=page&redirect_uri=https://oauth.vk.com/blank.html&scope=friends&response_type=token&v=5.52'">Кнопка с текстом</button>
-        </p>
-        <a href=https://oauth.vk.com/authorize?client_id=7533932&display=page&redirect_uri=http://localhost:5000.html&scope=friends&response_type=code&v=5.52><h1>authorize in vk</h1></a>
+        {% if current_user.is_authenticated %}
+        
+        	<p style="text-align: center"><a href="https://flaskvkapitest.herokuapp.com/logout" class="design">Выйти</a></p>
+        	<p align="center" style="font-size:30px">Друзья {{userData.first_name}} {{userData.last_name}}:</p>
+        {% else %}
+        	<p style="text-align: center"><a href="https://oauth.vk.com/authorize?client_id=7533932&display=popup&redirect_uri=https://flaskvkapitest.herokuapp.com&scope=friends,offline&response_type=code&v=5.52" class="design">Авторизоваться</a></p>
+        {% endif %}
+
+        {% if current_user.is_authenticated %}
+        {% for friend in friends %}
+        <div class="card">
+		  <img src={{friend.photo_200_orig}} alt="Avatar" style="width:100%">
+		  <div class="container">
+		    <h4><b>{{friend.first_name}} {{friend.last_name}}</b></h4>
+		    <p>Страна: {{friend.country.title}} </p>
+		    <p>Город: {{friend.city.title}} </p>
+		    <p>Пол: {{friend.sex}} </p>
+		    <p>Статус: {{friend.online}} </p>
+		    <a href="/friend/{{friend.id}}">Посмотреть друзей</a>
+		  </div>
+		</div>
+		<br>
+        {% endfor %}
+        {% endif %}
+
     </body>
 </html>
